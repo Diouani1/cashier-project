@@ -7,6 +7,7 @@ class Counter {
     this.cashBoxNumber = num;
     this.cashBox = arr;
   }
+
   // Static methods
   static countIn(obj) {
     return `${
@@ -28,10 +29,12 @@ class Counter {
       .reduce((prev, curr) => prev + +curr[0] * curr[1], 0);
     return `${total} Euro in The Cash Box ${obj.cashBoxNumber}`;
   }
+
   // This is a Private field declarations to use to sum all prices, all paid, and all changes
   #sumOfPrice = 0;
   #sumOfPaid = 0;
   #sumOfChange = 0;
+
   // Properties Methods
   cashCounter(price, paid) {
     let change = parseFloat((paid - price).toFixed(2));
@@ -48,6 +51,7 @@ class Counter {
 
     return this.#giveChange(change);
   }
+
   // This is a Private methods declarations  to add the amount of paid money to cash box
   #addMoney(num) {
     let arr = num.toString().split(".");

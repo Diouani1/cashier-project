@@ -1,3 +1,6 @@
+//cashier project//
+// ///// This is my first project with JavaScript and i didnt use Google source , i used only my skill.
+
 class Counter {
   constructor(fullName, num, arr) {
     this.cashierName = fullName;

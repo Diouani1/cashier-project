@@ -210,7 +210,7 @@ console.log(cashier1);
 console.log(cashier1.cashCounter(13, 13));
 console.log(cashier1.cashCounter(20, 50));
 console.log(cashier1.cashCounter(5.99, 10));
-console.log(cashier1.cashCounter(6.14, 31.14));
+console.log(cashier1.cashCounter(6.14, 21.14));
 
 console.log(Counter.countEarn(cashier1));
 console.log(Counter.countIn(cashier1));

@@ -6,17 +6,17 @@ class Counter {
   }
   // Static methods
   static countIn(obj) {
-    return `${obj.#in / 100} Euro is The Total incoming in The Cash Box ${
-      obj.cashBoxNumber
-    }`;
+    return `${
+      obj.#sumOfPaid / 100
+    } Euro is The Total incoming in The Cash Box ${obj.cashBoxNumber}`;
   }
   static countOut(obj) {
-    return `${obj.#out / 100} Euro is The Total outcoming from The Cash Box ${
-      obj.cashBoxNumber
-    }`;
+    return `${
+      obj.#sumOfChange / 100
+    } Euro is The Total outcoming from The Cash Box ${obj.cashBoxNumber}`;
   }
   static countEarn(obj) {
-    return `${obj.cashierName} had earned ${obj.#earn / 100} Euro`;
+    return `${obj.cashierName} had earned ${obj.#sumOfPrice / 100} Euro`;
   }
   static totalCashBox(obj) {
     let total = obj.cashBox
@@ -26,15 +26,15 @@ class Counter {
     return `${total} Euro in The Cash Box ${obj.cashBoxNumber}`;
   }
   // This is a Private field declarations to use to sum all prices, all paid, and all changes
-  #earn = 0;
-  #in = 0;
-  #out = 0;
+  #sumOfPrice = 0;
+  #sumOfPaid = 0;
+  #sumOfChange = 0;
   // Properties Methods
   cashCounter(price, paid) {
     let change = parseFloat((paid - price).toFixed(2));
-    this.#earn += price * 100;
-    this.#in += paid * 100;
-    this.#out += change * 100;
+    this.#sumOfPrice += price * 100;
+    this.#sumOfPaid += paid * 100;
+    this.#sumOfChange += change * 100;
     if (change < 0) {
       return `Customer should pay ${change * Math.sign(change)} Euro more`;
     }

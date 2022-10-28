@@ -10,24 +10,24 @@ class Counter {
 
   // Static methods
   static countIn(obj) {
-    return `${
-      obj.#sumOfPaid / 100
-    } Euro is The Total incoming in The Cash Box ${obj.cashBoxNumber}`;
+    return `${obj.#sumOfPaid.toFixed(
+      2
+    )} Euro is The Total incoming in The Cash Box ${obj.cashBoxNumber}`;
   }
   static countOut(obj) {
-    return `${
-      obj.#sumOfChange / 100
-    } Euro is The Total outcoming from The Cash Box ${obj.cashBoxNumber}`;
+    return `${obj.#sumOfChange.toFixed(
+      2
+    )} Euro is The Total outcoming from The Cash Box ${obj.cashBoxNumber}`;
   }
   static countEarn(obj) {
-    return `${obj.cashierName} had earned ${obj.#sumOfPrice / 100} Euro`;
+    return `${obj.cashierName} had earned ${obj.#sumOfPrice.toFixed(2)} Euro`;
   }
   static totalCashBox(obj) {
     let total = obj.cashBox
       .map((item) => Object.entries(item))
       .flat()
-      .reduce((prev, curr) => prev + +curr[0] * curr[1], 0);
-    return `${total} Euro in The Cash Box ${obj.cashBoxNumber}`;
+      .reduce((prev, curr) => prev + curr[0] * curr[1], 0);
+    return `${total.toFixed(2)} Euro in The Cash Box ${obj.cashBoxNumber}`;
   }
 
   // This is a Private field declarations to use to sum all prices, all paid, and all changes
@@ -38,9 +38,9 @@ class Counter {
   // Properties Methods
   cashCounter(price, paid) {
     let change = parseFloat((paid - price).toFixed(2));
-    this.#sumOfPrice += price * 100;
-    this.#sumOfPaid += paid * 100;
-    this.#sumOfChange += change * 100;
+    this.#sumOfPrice += price;
+    this.#sumOfPaid += paid;
+    this.#sumOfChange += change;
     if (change < 0) {
       return `Customer should pay ${change * Math.sign(change)} Euro more`;
     }
@@ -208,7 +208,7 @@ let diposit = [
 const cashier1 = new Counter("Diouani", 4, diposit);
 console.log(cashier1);
 console.log(cashier1.cashCounter(13, 13));
-console.log(cashier1.cashCounter(20, 50));
+console.log(cashier1.cashCounter(20.5, 50.02));
 console.log(cashier1.cashCounter(5.99, 10));
 console.log(cashier1.cashCounter(6.14, 21.14));
 
